@@ -204,6 +204,19 @@ const moviesController = {
                 })
             })
         }).catch(error=>console.log(error))
+    },
+    search:(req,res)=>{
+        const keyword= req.query.keyword
+
+        db.Movie.findAll({
+            where:{
+                title:{
+                    [Op.substring]:keyword
+                }
+            }
+        }).then(movies=>{
+            return res.render()
+        })
     }
 }
 
